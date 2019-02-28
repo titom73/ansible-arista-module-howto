@@ -1,0 +1,23 @@
+! Command: show running-config
+! device: ceos2 (cEOSLab, EOS-4.21.2F-10430819.4212F (engineering build))
+!
+transceiver qsfp default-mode 4x10G
+!
+hostname ceos2
+!
+spanning-tree mode mstp
+!
+no aaa root
+!
+username ansible privilege 15 secret sha512 $6$VIeqppufemK9nLGV$bwenyC/mURjyQdSyL/xEn5GEfGmk1Xl7/iv7vrnUA3Zw/2AMpwS/cdFyKjllVFaYBqEvP.8On1nDk4NSxnoEb0
+!
+interface Ethernet1
+!
+interface Ethernet2
+!
+no ip routing
+!
+management api http-commands
+   no shutdown
+!
+end

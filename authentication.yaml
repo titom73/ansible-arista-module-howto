@@ -1,0 +1,8 @@
+---
+arista_credentials:
+  transport: 'eapi'
+  validate_certs: no
+  host: "{{ ansible_host }}"
+  username: "{{ ansible_user }}"
+  password: "{{ansible_ssh_pass}}"
+  timeout: 20
