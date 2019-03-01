@@ -1,10 +1,27 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [Ansible automation for Arista EOS devices](#ansible-automation-for-arista-eos-devices)
+    - [About Ansible modules for Arista EOS automation](#about-ansible-modules-for-arista-eos-automation)
+    - [Requirements](#requirements)
+        - [Docker and docker-topo](#docker-and-docker-topo)
+        - [Get cEOS-LAB image](#get-ceos-lab-image)
+        - [Install requirements](#install-requirements)
+    - [Repository structure](#repository-structure)
+    - [Ask question or report issue](#ask-question-or-report-issue)
+    - [Contribute](#contribute)
+    - [License](#license)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Ansible automation for Arista EOS devices
 
 This project provides some ready-to-use Ansible playbooks to interact with Arista EOS devices.
 
 This repository comes with docker topology to execute content:
 - 2 cEOS-LAB instances
-- ['docker-topo'](https://github.com/networkop/docker-topo) to build docker topoogy
+- [`docker-topo`](https://github.com/networkop/docker-topo) to build docker topoogy
 - ansible with [arista core modules](https://docs.ansible.com/ansible/latest/modules/list_of_network_modules.html#eos)
 
 ## About Ansible modules for Arista EOS automation
@@ -18,7 +35,7 @@ A complete list of available eos module is available on [Ansible documentation w
 Repository requires to install some requirements to be consumed:
 
 - Docker daemon
-- [`docker-topo`]() script
+- [`docker-topo`](https://github.com/networkop/docker-topo) script
 - cEOS-LAB image
 - ansible software
 
@@ -39,7 +56,7 @@ Docker installation is platform specific and you should use following links:
 - [Ubuntu installation](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
 - [Centos installation](https://docs.docker.com/install/linux/docker-ce/centos/)
 
-Then, install [`docker-topo`] from `pip`:
+Then, install [`docker-topo`](https://github.com/networkop/docker-topo) from `pip`:
 
 ```shell
 $ python3 -m pip install git+https://github.com/networkop/docker-topo.git
@@ -77,7 +94,7 @@ ansible 2.7.8
 
 __List of documents__:
 
-- Manage eos configuration with ansible: [docs/EOS_CONFIG](docs/EOS_CONFIG.md)
+- Manage eos configuration with ansible: [EOS_CONFIG](docs/EOS_CONFIG.md)
 
 
 ## Ask question or report issue
