@@ -9,23 +9,76 @@ This repository comes with docker topology to execute content:
 
 ## About Ansible modules for Arista EOS automation
 
-WIP
+Arista EOS modules are part of the core modules list of ansible and do not require any additional 3rd part modules to be installed on your server. They are maintained by [Ansible Network Team](https://docs.ansible.com/ansible/latest/user_guide/modules_support.html#modules-support) and provides options to manage configuration and get status as well.
+
+A complete list of available eos module is available on [Ansible documentation website](https://docs.ansible.com/ansible/latest/modules/list_of_network_modules.html#eos)
 
 ## Requirements
 
-WIP
+Repository requires to install some requirements to be consumed:
+
+- Docker daemon
+- [`docker-topo`]() script
+- cEOS-LAB image
+- ansible software
+
+In the meantime, it is recommended to run this repository in a virtual-environment. To start such environment, use following commands:
+
+```shell
+$ python3 -m pip install virtualenv
+$ python3 -m virtualenv ansible_training
+$ cd ansible_training
+$ source bin/activate
+```
+
+### Docker and docker-topo
+
+Docker installation is platform specific and you should use following links:
+
+- [macOS installation](https://docs.docker.com/docker-for-mac/install/)
+- [Ubuntu installation](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
+- [Centos installation](https://docs.docker.com/install/linux/docker-ce/centos/)
+
+Then, install [`docker-topo`] from `pip`:
+
+```shell
+$ python3 -m pip install git+https://github.com/networkop/docker-topo.git
+```
 
 ### Get cEOS-LAB image
 
-WIP
+With your Arista login, go to download page and download cEOS-LAB image on your laptop. Then, add ceos images to docker:
+
+```shell
+$ docker import cEOS-lab.tar.xz ceosimage:latest
+```
 
 ### Install requirements
 
-WIP
+Install ansible with `pip`:
+
+```shell
+$ pip install -r requirements.txt
+```
+
+Then, check ansible version:
+
+```
+$ ansible --version
+ansible 2.7.8
+  config file = /Users/tgrimonet/Projects/ansible-demo/ansible.cfg
+  configured module search path = ['/Users/tgrimonet/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /Users/tgrimonet/.venv/ansible-demo/lib/python3.7/site-packages/ansible
+  executable location = /Users/tgrimonet/.venv/ansible-demo/bin/ansible
+  python version = 3.7.2 (default, Jan 13 2019, 12:50:01) [Clang 10.0.0 (clang-1000.11.45.5)]
+```
 
 ## Repository structure
 
-WIP
+__List of documents__:
+
+- Manage eos configuration with ansible: [docs/EOS_CONFIG](docs/EOS_CONFIG.md)
+
 
 ## Ask question or report issue
 
