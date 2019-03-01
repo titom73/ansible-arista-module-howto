@@ -11,7 +11,7 @@ As `eos_*` modules are part of core engine, we can use ansible options to run te
 
 ## Apply lines of configurations to devices.
 
-__Example playbooks__: ['pb.config.lines.simple.yaml'](../pb.config.lines.simple.yaml)
+__Example playbooks__: ['pb.config.lines.simple.yaml'](../ansible-content/pb.config.lines.simple.yaml)
 
 ### Basic lines of configuration
 
