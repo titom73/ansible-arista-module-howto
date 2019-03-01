@@ -1,0 +1,6 @@
+---
+interfaces:
+  - name: 'Ethernet 1'
+    description: 'description made by ANSIBLE'
+  - name: 'Ethernet 2'
+    description: 'description made by ANSIBLE'

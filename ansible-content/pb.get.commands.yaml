@@ -1,0 +1,30 @@
+---
+- name: Run commands on remote LAB devices
+  hosts: lab
+  connection: local
+  gather_facts: no
+  pre_tasks:
+    - include_vars: "authentication.yaml"
+
+  tasks:
+    - name: run show version on remote devices
+      eos_command:
+        provider: "{{arista_credentials}}"
+        commands: "show version"
+      register: eos_version
+
+    - name: 'Show running version'
+      debug:
+        msg: "Device is running {{eos_version['stdout_lines'][0]['version']}}"
+
+    - name: run show version on remote devices
+      eos_command:
+        provider: "{{arista_credentials}}"
+        commands: 
+          - command: "show interfaces description"
+            output: json
+      register: ifl_json
+
+    - name: Output of JSON result
+      debug:
+        var: ifl_json['stdout_lines'][0]['interfaceDescriptions']['Ethernet1']['interfaceStatus']
