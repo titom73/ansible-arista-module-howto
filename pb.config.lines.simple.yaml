@@ -1,0 +1,30 @@
+---
+- name: Run commands on remote LAB devices
+  hosts: all
+  connection: local
+  gather_facts: no
+  pre_tasks:
+    - include_vars: "authentication.yaml"
+
+  tasks:
+    - name: Configure device hostname from lines
+      eos_config:
+        provider: "{{arista_credentials}}"
+        lines: 
+          - "hostname MyHostname"
+          - "ntp server 1.1.1.1"
+
+    - name: Configure device hostname from lines
+      eos_config:
+        provider: "{{arista_credentials}}"
+        lines: 
+          - "hostname {{inventory_hostname}}-automation"
+          - "ntp server 1.1.1.1"
+
+    - name: Configure interface description
+      eos_config:
+        provider: "{{arista_credentials}}"
+        lines: 
+          - description My Wonderful description
+        parents: interface Ethernet 1
+        replace: block
