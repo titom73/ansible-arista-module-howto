@@ -186,3 +186,8 @@ Interface      Status         Protocol    Description
 Et1            up             up          My Wonderful description
 Et2            up             up
 ```
+
+## Apply configuration file to device
+
+When playing with jinja2 templates, it is easier to generate a file and then push it to devices instead of applying line by line.
+
