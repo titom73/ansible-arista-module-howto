@@ -1,12 +1,3 @@
-# Ansible automation for Arista EOS devices
-
-This project provides some ready-to-use Ansible playbooks to interact with Arista EOS devices.
-
-This repository comes with docker topology to execute content:
-- 2 cEOS-LAB instances
-- [`docker-topo`](https://github.com/networkop/docker-topo) to build docker topoogy
-- ansible with [arista core modules](https://docs.ansible.com/ansible/latest/modules/list_of_network_modules.html#eos)
-
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**
@@ -23,6 +14,15 @@ This repository comes with docker topology to execute content:
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
+# Ansible automation for Arista EOS devices
+
+This project provides some ready-to-use Ansible playbooks to interact with Arista EOS devices.
+
+This repository comes with docker topology to execute content:
+- 2 cEOS-LAB instances
+- [`docker-topo`](https://github.com/networkop/docker-topo) to build docker topoogy
+- ansible with [arista core modules](https://docs.ansible.com/ansible/latest/modules/list_of_network_modules.html#eos)
+
 ## About Ansible modules for Arista EOS automation
 
 Arista EOS modules are part of the core modules list of ansible and do not require any additional 3rd part modules to be installed on your server. They are maintained by [Ansible Network Team](https://docs.ansible.com/ansible/latest/user_guide/modules_support.html#modules-support) and provides options to manage configuration and get status as well.
@@ -33,6 +33,9 @@ A complete list of available eos module is available on [Ansible documentation w
 ## Repository structure
 
 > Do not forget to install requirements if you want to run tests
+
+- All __ansible__ content is under [`ansible-content`](ansible-content) folder.
+- All __HOW-TOs__ are under [`docs`](docs) folder
 
 __List of documents__:
 
