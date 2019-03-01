@@ -7,5 +7,5 @@ VERSION: 2
 driver: bridge
 PREFIX: ansible
 CONF_DIR: ./eos-config
-CEOS_IMAGE: arista/ceos-lab:4.21.2F
+CEOS_IMAGE: ceosimage:latest
 PUBLISH_BASE: 8000
