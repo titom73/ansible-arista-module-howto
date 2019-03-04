@@ -2,7 +2,7 @@
 - name: Run commands on remote LAB devices
   hosts: all
   connection: local
-  gather_facts: no
+  gather_facts: false
   pre_tasks:
     - include_vars: "authentication.yaml"
 
@@ -11,4 +11,3 @@
       eos_config:
         provider: "{{arista_credentials}}"
         src: "inputs/generic-config.cfg"
-        replace: block

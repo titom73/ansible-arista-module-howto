@@ -1,0 +1,24 @@
+---
+stages:
+  - repository_check
+
+before_script:
+  - pip install -r requirements.txt
+
+YAML_SANITY_CHECK:
+  stage: repository_check
+  image: python:2.7
+  before_script:
+    - pip install yamllint
+  script:
+    - sh .ci/check-playbook-yamllint.sh
+  tags:
+    - docker
+
+PLAYBOOK_SANITY_CHECKS:
+  stage: repository_check
+  image: python:2.7
+  script:
+    - sh .ci/check-playbook-syntax.sh
+  tags:
+    - docker

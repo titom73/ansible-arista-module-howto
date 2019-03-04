@@ -2,7 +2,7 @@
 - name: Run commands on remote LAB devices
   hosts: lab
   connection: local
-  gather_facts: no
+  gather_facts: false
   pre_tasks:
     - include_vars: "authentication.yaml"
 
@@ -20,7 +20,7 @@
     - name: run show version on remote devices
       eos_command:
         provider: "{{arista_credentials}}"
-        commands: 
+        commands:
           - command: "show interfaces description"
             output: json
       register: ifl_json
