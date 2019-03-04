@@ -1,0 +1,13 @@
+---
+- name: Run commands on remote LAB devices
+  hosts: all
+  connection: local
+  gather_facts: no
+  pre_tasks:
+    - include_vars: "authentication.yaml"
+
+  tasks:
+    - name: Configure SNMP information with template
+      eos_config:
+        provider: "{{arista_credentials}}"
+        src: "inputs/template-config.j2"
