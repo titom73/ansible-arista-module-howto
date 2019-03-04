@@ -1,3 +1,20 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents** 
+
+- [eos_config to manage Arista EOS configuration](#eos_config-to-manage-arista-eos-configuration)
+    - [Apply lines of configurations to devices.](#apply-lines-of-configurations-to-devices)
+        - [Basic lines of configuration](#basic-lines-of-configuration)
+        - [Dynamic lines of configuration](#dynamic-lines-of-configuration)
+        - [Lines of configuration within a block](#lines-of-configuration-within-a-block)
+    - [Apply configuration file to device](#apply-configuration-file-to-device)
+        - [Apply a config file](#apply-a-config-file)
+        - [Apply a template](#apply-a-template)
+    - [And finally, how to save config](#and-finally-how-to-save-config)
+    - [Get diff between running and intended configuration](#get-diff-between-running-and-intended-configuration)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # eos_config to manage Arista EOS configuration
 
 [`eos_config`](https://docs.ansible.com/ansible/latest/modules/eos_config_module.html#eos-config-module) is a core module managed by Ansible network team. As this module is part of the core, there is no need to install additional Ansible module with `ansible-galaxy`
@@ -190,4 +207,255 @@ Et2            up             up
 ## Apply configuration file to device
 
 When playing with jinja2 templates, it is easier to generate a file and then push it to devices instead of applying line by line.
+
+`eos_config` support a mechanism to push a config files from your server to remote devices. This file can be either a plain text file or a JINJA2 template. In case of a template, rendering will be done first by ansible and then result will be applied on devices.
+
+### Apply a config file
+
+To apply a plain text config, following playbook should be used:
+
+```yaml
+---
+- name: Run commands on remote LAB devices
+  hosts: all
+  connection: local
+  gather_facts: no
+  pre_tasks:
+    - include_vars: "authentication.yaml"
+
+  tasks:
+    - name: Configure interface description
+      eos_config:
+        provider: "{{arista_credentials}}"
+        src: inputs/generic-config.cfg
+```
+
+> Config file can be a complete Arista configuration or just a snippet of the configuration you want to update.
+
+In this example, [__`inputs/generic-config.cfg`__](../ansible-content/inputs/generic-config.cfg) has following content:
+
+```
+interface Ethernet2
+   description Description from generic configuration block
+!
+```
+
+And running playbook [__`pb.config.file.yaml`__](../ansible-content/pb.config.file.yaml) with `--diff` option shows all changes:
+
+```shell
+$ ansible-playbook pb.config.file.yaml --diff
+
+PLAY [Run commands on remote LAB devices] ********
+
+TASK [include_vars] ********
+ok: [ceos1]
+ok: [ceos2]
+
+TASK [Configure interface description] ********
+--- system:/running-config
++++ session:/********_1551711841-session-config
+@@ -13,6 +13,7 @@
+ interface Ethernet1
+ !
+ interface Ethernet2
++   description Description from generic configuration block
+ !
+  no ip routing
+ !
+
+changed: [ceos2]
+--- system:/running-config
++++ session:/********_1551711841-session-config
+@@ -13,6 +13,7 @@
+ interface Ethernet1
+ !
+ interface Ethernet2
++   description Description from generic configuration block
+ !
+ no ip routing
+ !
+
+changed: [ceos1]
+
+PLAY RECAP ********
+ceos1                      : ok=2    changed=1    unreachable=0    failed=0
+ceos2                      : ok=2    changed=1    unreachable=0    failed=0
+```
+
+### Apply a template
+
+`eos_config` also supports a JINJA2 template as an input file. In this scenario, ansible will run template rendering locally and then will push result to devices. It means that your configuration will have some content specific per device and / or collected in a previous task.
+
+> This section will not describe JINJA2 syntax. A specific page is available with some hints about jinja2 syntax and YAML structures.
+
+Following template creates a basic SNMP configuration with generic fields. Only thing is `chassis-id` will be set with `inventory_hostname` defined in our [`inventory.ini`](../ansible-content/inventory.ini) file.
+
+```jinja2
+snmp-server chassis-id {{inventory_hostname}}
+snmp-server contact demo@acme.com
+snmp-server location "cEOS Virtual lab"
+```
+
+Playbook is very close to playbook in [_Apply a config file_](#apply-a-config-file)
+
+```yaml
+---
+- name: Run commands on remote LAB devices
+  hosts: all
+  connection: local
+  gather_facts: no
+  pre_tasks:
+    - include_vars: "authentication.yaml"
+
+  tasks:
+    - name: Configure SNMP information with template
+      eos_config:
+        provider: "{{arista_credentials}}"
+        src: "inputs/template-config.j2"
+```
+
+The main difference is `src` field where you put a template file instead of a plan text configuration.
+
+As you can see in extract below, content is built on a per device approach:
+
+```shell
+$ ansible-playbook pb.config.template.yaml --diff
+
+PLAY [Run commands on remote LAB devices] ********
+
+TASK [include_vars] ********
+ok: [ceos1]
+ok: [ceos2]
+
+TASK [Configure SNMP information with template] ********
+--- system:/running-config
++++ session:/********_1551713015-session-config
+@@ -3,6 +3,10 @@
+ transceiver qsfp default-mode 4x10G
+ !
+ hostname ceos1
++!
++snmp-server chassis-id ceos1
++snmp-  server contact demo@acme.com
++snmp-server location "cEOS Virtual lab"
+ !
+ spanning-tree mode mstp
+ !
+
+changed: [ceos1]
+--- system:/running-config
++++ session:/********_1551713015-session-config
+@@ -3,6 +3,10 @@
+ transceiver qsfp default-mode 4x10G
+ !
+ hostname ceos2
++!
++snmp-server chassis-id ceos2
++snmp-server contact demo@acme.com
++snmp-server location "cEOS Virtual lab"
+ !
+ spanning-tree mode mstp
+ !
+
+changed: [ceos2]
+
+PLAY RECAP ********
+ceos1                      : ok=2    changed=1    unreachable=0    failed=0
+ceos2                      : ok=2    changed=1    unreachable=0    failed=0
+```
+
+## And finally, how to save config
+
+`eos_config` module can automatically save config to the __startup_config__. It provides 3 different options to do that. The `save` action is started by either __save__ or __save_when__ keywords:
+
+- __save__: automatically save the running-config to startup-config after any execution of the task.
+- __save_when__: gives an option to select when ansible save running-config to startup-config:
+  - `always`: Equal to __save__ keyword
+  - `modified`: The running-config will only be copied to the startup-config if it has changed since the last save to startup-config
+  - `changed`: (ansible >= 2.5) The running-config will only be copied to the startup-config if the task has made a change
+  - `never`: Well, running will never be copied to startup-config. Can be useful for validation purpose
+
+So the last playbook should be like this one:
+
+```yaml
+---
+- name: Run commands on remote LAB devices
+  hosts: all
+  connection: local
+  gather_facts: no
+  pre_tasks:
+    - include_vars: "authentication.yaml"
+
+  tasks:
+    - name: Configure SNMP information with template
+      eos_config:
+        provider: "{{arista_credentials}}"
+        src: "inputs/template-config.j2"
+        save_when: changed
+```
+
+## Get diff between running and intended configuration
+
+In cas we generate complete configuration, it is nice to capture the deviation between our target (generated configuration) and running configuration on devices.
+
+So to do that, `eos_config` has a special option named `diff_against: intended` and then we defined what we named __intended__ configuration.
+
+```yaml
+---
+- name: Run commands on remote LAB devices
+  hosts: ceos1
+  connection: local
+  gather_facts: no
+  pre_tasks:
+    - include_vars: "authentication.yaml"
+
+  tasks:
+    - name: diff the running config against a master config
+      eos_config:
+        provider: "{{arista_credentials}}"
+        diff_against: intended
+        intended_config: "{{ lookup('file', 'inputs/{{inventory_hostname}}-master.cfg') }}"
+```
+
+Output of the [__pb.config.intended.yaml__](../ansible-content/pb.config.intended.yaml) playbook is the following:
+
+```shell
+$ ansible-playbook pb.configure.intended.yaml --check --diff
+
+PLAY [Run commands on remote LAB devices] ********
+
+TASK [include_vars] ********
+ok: [ceos1]
+
+TASK [diff the running config against a master config] ********
+--- before
++++ after
+@@ -1,16 +1,10 @@
+ transceiver qsfp default-mode 4x10G
+-hostname ceos1
+-snmp-server chassis-id ceos1
+-snmp-server contact demo@acme.com
+-snmp-server location "cEOS Virtual lab"
++hostname CEOS1-TEST
+ spanning-tree mode mstp
+ no aaa root
+ username ******** privilege 15 secret sha512 $6$j80NtRkV0CMlgXPS$a0.JbwuO1NMvIthS4eu6dEMHIV9gNGRRFf5SI6qNu5g4I3zxinnVrSMyj8EkQ1V/x7ORAWwe5CpYmgQME2jad1
+ interface Ethernet1
+ interface Ethernet2
+-   description My Wonderful description
+-   switchport trunk allowed vlan 12
+-   switchport mode trunk
+ no ip routing
+ management api http-commands
+    no shutdown
+
+changed: [ceos1]
+
+PLAY RECAP ********
+ceos1                      : ok=2    changed=1    unreachable=0    failed=0
+```
+
+As you can see, we have a complete view of the configuration deviation between running and intended.
+
+> Note: this module requires to be run with --check flag.
 
