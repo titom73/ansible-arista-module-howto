@@ -1,3 +1,5 @@
+[![pipeline status](https://gitlab.aristanetworks.com/tgrimonet/ansible-content/badges/master/pipeline.svg)](https://gitlab.aristanetworks.com/tgrimonet/ansible-content/commits/master)
+
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**
