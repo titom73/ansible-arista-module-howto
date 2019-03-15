@@ -1,0 +1,25 @@
+---
+- name: Run commands on remote LAB devices
+  hosts: all
+  connection: local
+  gather_facts: false
+  pre_tasks:
+    - include_vars: "authentication.yaml"
+
+  tasks:
+    - name: Create output directory (if missing)
+      file:
+        path: "{{playbook_dir}}/config"
+        state: directory
+
+    - name: Collect all facts from device
+      eos_facts:
+        provider: "{{arista_credentials}}"
+        gather_subset:
+          - config
+      register: facts
+
+    - name: copy collected configuration in configuration/text directory
+      copy:
+        content: "{{ facts.ansible_facts.ansible_net_config }}"
+        dest: "{{ playbook_dir }}/config/{{ inventory_hostname }}.conf"

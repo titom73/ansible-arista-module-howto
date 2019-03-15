@@ -1,0 +1,25 @@
+---
+- name: Run commands on remote LAB devices
+  hosts: ceos1
+  connection: local
+  gather_facts: false
+  pre_tasks:
+    - include_vars: "authentication.yaml"
+
+  tasks:
+    - name: Configure device hostname from lines
+      eos_config:
+        provider: "{{arista_credentials}}"
+        lines:
+          - quiesce
+        parents:
+          - maintenance
+          - unit System
+
+    - name: Wait for device to change to maintenance mode (10sec)
+      eos_command:
+        provider: "{{arista_credentials}}"
+        commands: show maintenance
+        wait_for: result[0]['units']['System']['state'] eq 'underMaintenance'
+        interval: 2
+        retries: 5

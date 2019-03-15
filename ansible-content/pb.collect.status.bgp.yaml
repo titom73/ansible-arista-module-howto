@@ -1,0 +1,25 @@
+---
+- name: Run commands on remote LAB devices
+  hosts: all
+  connection: local
+  gather_facts: false
+  pre_tasks:
+    - include_vars: "authentication.yaml"
+
+  tasks:
+    - name: Collect BGP Status
+      eos_command:
+        commands:
+          - enable
+          - show ip bgp summary
+        provider: "{{arista_credentials}}"
+      register: bgp_status
+
+    # - name: Display result
+    #   debug:
+    #     var: bgp_status
+
+    - name: Display result
+      debug:
+        msg: "Peering with {{item.key}} is {{item.value.peerState}}"
+      with_dict: "{{bgp_status.stdout[1].vrfs.default.peers}}"

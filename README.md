@@ -40,6 +40,7 @@ A complete list of available eos module is available on [Ansible documentation w
 __List of documents__:
 
 - Manage eos configuration with ansible: [EOS_CONFIG](docs/EOS_CONFIG.md)
+- Getting status of Arista devices with Ansible: [EOS_COMMAND](docs/COLLECTING_STATUS.md)
 - Jinja2 & YML structures: [templating engine](docs/JINJA_YAML_STRUCTURES.md)
 
 

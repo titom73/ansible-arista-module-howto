@@ -1,0 +1,19 @@
+---
+- name: Run commands on remote LAB devices
+  hosts: lab
+  connection: network_cli
+  gather_facts: false
+  pre_tasks:
+    - include_vars: "authentication.yaml"
+
+  tasks:
+    - name: Collect all facts from device
+      eos_facts:
+        provider: "{{arista_credentials}}"
+        gather_subset:
+          - all
+      register: facts
+
+    - name: Display result
+      debug:
+        msg: "Model is {{facts.ansible_facts.ansible_net_model}} and it is running {{facts.ansible_facts.ansible_net_version}}"

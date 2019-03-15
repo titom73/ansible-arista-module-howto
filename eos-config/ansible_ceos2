@@ -12,10 +12,16 @@ no aaa root
 username ansible privilege 15 secret sha512 $6$VIeqppufemK9nLGV$bwenyC/mURjyQdSyL/xEn5GEfGmk1Xl7/iv7vrnUA3Zw/2AMpwS/cdFyKjllVFaYBqEvP.8On1nDk4NSxnoEb0
 !
 interface Ethernet1
+   no switchport
+   ip address 10.0.0.2/24
 !
 interface Ethernet2
 !
-no ip routing
+ip routing
+!
+router bgp 65002
+   neighbor 10.0.0.1 remote-as 65001
+   neighbor 10.0.0.1 maximum-routes 12000 
 !
 management api http-commands
    no shutdown
