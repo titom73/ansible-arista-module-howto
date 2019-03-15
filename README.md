@@ -4,15 +4,13 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**
 
-- [About Ansible modules for Arista EOS automation](#about-ansible-modules-for-arista-eos-automation)
-- [Repository structure](#repository-structure)
-- [Requirements](#requirements)
-    - [Docker and docker-topo](#docker-and-docker-topo)
-    - [Get cEOS-LAB image](#get-ceos-lab-image)
-    - [Install requirements](#install-requirements)
-- [Ask question or report issue](#ask-question-or-report-issue)
-- [Contribute](#contribute)
-- [License](#license)
+- [Ansible automation for Arista EOS devices](#ansible-automation-for-arista-eos-devices)
+    - [About Ansible modules for Arista EOS automation](#about-ansible-modules-for-arista-eos-automation)
+    - [Repository structure](#repository-structure)
+    - [Installation & Requirements](#installation-&-requirements)
+    - [Ask question or report issue](#ask-question-or-report-issue)
+    - [Contribute](#contribute)
+    - [License](#license)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -45,65 +43,9 @@ __List of documents__:
 - Jinja2 & YML structures: [templating engine](docs/JINJA_YAML_STRUCTURES.md)
 
 
-## Requirements
+## Installation & Requirements
 
-Repository requires to install some requirements to be consumed:
-
-- Docker daemon
-- [`docker-topo`](https://github.com/networkop/docker-topo) script
-- cEOS-LAB image
-- ansible software
-
-In the meantime, it is recommended to run this repository in a virtual-environment. To start such environment, use following commands:
-
-```shell
-$ python3 -m pip install virtualenv
-$ python3 -m virtualenv ansible_training
-$ cd ansible_training
-$ source bin/activate
-```
-
-### Docker and docker-topo
-
-Docker installation is platform specific and you should use following links:
-
-- [macOS installation](https://docs.docker.com/docker-for-mac/install/)
-- [Ubuntu installation](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
-- [Centos installation](https://docs.docker.com/install/linux/docker-ce/centos/)
-
-Then, install [`docker-topo`](https://github.com/networkop/docker-topo) from `pip`:
-
-```shell
-$ python3 -m pip install git+https://github.com/networkop/docker-topo.git
-```
-
-### Get cEOS-LAB image
-
-With your Arista login, go to download page and download cEOS-LAB image on your laptop. Then, add ceos images to docker:
-
-```shell
-$ docker import cEOS-lab.tar.xz ceosimage:latest
-```
-
-### Install requirements
-
-Install ansible with `pip`:
-
-```shell
-$ pip install -r requirements.txt
-```
-
-Then, check ansible version:
-
-```
-$ ansible --version
-ansible 2.7.8
-  config file = /Users/tgrimonet/Projects/ansible-demo/ansible.cfg
-  configured module search path = ['/Users/tgrimonet/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
-  ansible python module location = /Users/tgrimonet/.venv/ansible-demo/lib/python3.7/site-packages/ansible
-  executable location = /Users/tgrimonet/.venv/ansible-demo/bin/ansible
-  python version = 3.7.2 (default, Jan 13 2019, 12:50:01) [Clang 10.0.0 (clang-1000.11.45.5)]
-```
+Please refer to [installation](INSTALL.md) before running content of this repository
 
 ## Ask question or report issue
 
