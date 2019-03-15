@@ -42,6 +42,7 @@ A complete list of available eos module is available on [Ansible documentation w
 __List of documents__:
 
 - Manage eos configuration with ansible: [EOS_CONFIG](docs/EOS_CONFIG.md)
+- Jinja2 & YML structures: [templating engine](docs/JINJA2_YAML_STRUCTURE.md)
 
 
 ## Requirements
