@@ -28,7 +28,7 @@ As `eos_*` modules are part of core engine, we can use ansible options to run te
 
 ## Apply lines of configurations to devices.
 
-__Example playbooks__: ['pb.config.lines.simple.yaml'](../ansible-content/pb.config.lines.simple.yaml)
+__Example playbooks__: ['pb.config.lines.simple.yaml'](https://github.com/titom73/ansible-arista-module-howto/tree/master/ansible-content/pb.config.lines.simple.yaml)
 
 ### Basic lines of configuration
 
@@ -52,7 +52,7 @@ To push lines of configuraiton to device, a small playbook should be like this:
           - "ntp server 1.1.1.1"
 ```
 
-In this playbook, we use an authentication provider for ARISTA products as described in the [home page](../README.md)
+In this playbook, we use an authentication provider for ARISTA products as described in the [home page](https://github.com/titom73/ansible-arista-module-howto/tree/master/README.md)
 
 When applying this playbook, output is like below:
 
@@ -232,7 +232,7 @@ To apply a plain text config, following playbook should be used:
 
 > Config file can be a complete Arista configuration or just a snippet of the configuration you want to update.
 
-In this example, [__`inputs/generic-config.cfg`__](../ansible-content/inputs/generic-config.cfg) has following content:
+In this example, [__`inputs/generic-config.cfg`__](https://github.com/titom73/ansible-arista-module-howto/tree/master/ansible-content/inputs/generic-config.cfg) has following content:
 
 ```
 interface Ethernet2
@@ -240,7 +240,7 @@ interface Ethernet2
 !
 ```
 
-And running playbook [__`pb.config.file.yaml`__](../ansible-content/pb.config.file.yaml) with `--diff` option shows all changes:
+And running playbook [__`pb.config.file.yaml`__](https://github.com/titom73/ansible-arista-module-howto/tree/master/ansible-content/pb.config.file.yaml) with `--diff` option shows all changes:
 
 ```shell
 $ ansible-playbook pb.config.file.yaml --diff
@@ -288,7 +288,7 @@ ceos2                      : ok=2    changed=1    unreachable=0    failed=0
 
 > This section will not describe JINJA2 syntax. A specific page is available with some hints about jinja2 syntax and YAML structures.
 
-Following template creates a basic SNMP configuration with generic fields. Only thing is `chassis-id` will be set with `inventory_hostname` defined in our [`inventory.ini`](../ansible-content/inventory.ini) file.
+Following template creates a basic SNMP configuration with generic fields. Only thing is `chassis-id` will be set with `inventory_hostname` defined in our [`inventory.ini`](https://github.com/titom73/ansible-arista-module-howto/tree/master/ansible-content/inventory.ini) file.
 
 ```jinja2
 snmp-server chassis-id {{inventory_hostname}}
@@ -417,7 +417,7 @@ So to do that, `eos_config` has a special option named `diff_against: intended` 
         intended_config: "{{ lookup('file', 'inputs/{{inventory_hostname}}-master.cfg') }}"
 ```
 
-Output of the [__pb.config.intended.yaml__](../ansible-content/pb.config.intended.yaml) playbook is the following:
+Output of the [__pb.config.intended.yaml__](https://github.com/titom73/ansible-arista-module-howto/tree/master/ansible-content/pb.config.intended.yaml) playbook is the following:
 
 ```shell
 $ ansible-playbook pb.configure.intended.yaml --check --diff

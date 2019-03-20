@@ -43,7 +43,7 @@ This module collects all device facts from remote device. All keys found on devi
 
 ### Collect all facts and display some variables
 
-Below is a [playbook example](../ansible-content/pb.collect.facts.yaml) that grab all facts, register them into a variable named `myFacts` and then display output
+Below is a [playbook example](https://github.com/titom73/ansible-arista-module-howto/tree/master/ansible-content/pb.collect.facts.yaml) that grab all facts, register them into a variable named `facts` and then display output
 
 ```yaml
 ---
@@ -61,6 +61,7 @@ Below is a [playbook example](../ansible-content/pb.collect.facts.yaml) that gra
         gather_subset:
           - all
       register: facts
+
     - name: Display result
       debug:
         msg: "Model is {{facts.ansible_facts.ansible_net_model}} and it is running {{facts.ansible_facts.ansible_net_version}}"
@@ -80,7 +81,7 @@ ok: [ceos01] => {
 
 ### Save device configuration from facts
 
-To save configuration, we can collect only configuration fact from device and save output to a file like in [playbook](../ansible-content/pb.collect.facts.config.yaml) below:
+To save configuration, we can collect only configuration fact from device and save output to a file like in [playbook](https://github.com/titom73/ansible-arista-module-howto/tree/master/ansible-content/pb.collect.facts.config.yaml) below:
 
 ```yaml
 ---
@@ -282,7 +283,7 @@ ceos2                      : ok=3    changed=0    unreachable=0    failed=0
 
 Waiting for a specific result is useful to set a task to fail or success depending on a change propagating in the network.
 
-In this example, we are going to put one device in [maintenance mode](https://www.arista.com/en/um-eos/eos-section-10-1-overview#ww1156633). To do that, we use a [playbook](../ansible-content/pb.collect.waitfor.maintenance.yaml) to configure device in maintenance mode using [`eos_config`](EOS_CONFIG.md) and then waiting for result of this change with command `show maintenance`
+In this example, we are going to put one device in [maintenance mode](https://www.arista.com/en/um-eos/eos-section-10-1-overview#ww1156633). To do that, we use a [playbook](https://github.com/titom73/ansible-arista-module-howto/tree/master/ansible-content/pb.collect.waitfor.maintenance.yaml) to configure device in maintenance mode using [`eos_config`](EOS_CONFIG.md) and then waiting for result of this change with command `show maintenance`
 
 ```yaml
 ---

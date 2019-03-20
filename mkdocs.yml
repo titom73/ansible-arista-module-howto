@@ -1,0 +1,9 @@
+site_name: Arista & Ansible How-Tos
+pages:
+  - Home: 'index.md'
+  - Setup lab: INSTALL.md
+  - How To:
+      - Get Commands: 'COLLECTING_STATUS.md'
+      - Configure EOS: 'EOS_CONFIG.md'
+      - JINJA & YAML: 'JINJA_YAML_STRUCTURES.md'
+theme: readthedocs

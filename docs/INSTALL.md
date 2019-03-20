@@ -1,10 +1,11 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+**Table of Contents**
 
 - [Requirements](#requirements)
     - [Docker and docker-topo](#docker-and-docker-topo)
     - [Get cEOS-LAB image](#get-ceos-lab-image)
+    - [Run docker topology](#run-docker-topology)
     - [Install requirements](#install-requirements)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -14,7 +15,7 @@
 Repository requires to install some requirements to be consumed:
 
 - Docker daemon
-- [`docker-topo`](https://github.com/networkop/docker-topo) script
+- [__docker-topo__](https://github.com/networkop/docker-topo) script
 - cEOS-LAB image
 - ansible software
 
@@ -49,6 +50,22 @@ With your Arista login, go to download page and download cEOS-LAB image on your 
 $ docker import cEOS-lab.tar.xz ceosimage:latest
 ```
 
+## Run docker topology
+
+Once docker-topo is installed, run the docker topology with following commands:
+
+```shell
+# Clone repository locally
+$ git clone https://github.com/titom73/ansible-arista-module-howto.git
+
+# Enter repository
+$ cd ansible-arista-module-howto/
+
+# Build docker topology
+$ docker-topo --create ansible-demo-topology.yaml
+```
+
+
 ## Install requirements
 
 Install ansible with `pip`:
@@ -57,7 +74,7 @@ Install ansible with `pip`:
 $ pip install -r requirements.txt
 ```
 
-Then, check ansible version:
+Then, check ansible version (version might have changed until we release this document):
 
 ```
 $ ansible --version
