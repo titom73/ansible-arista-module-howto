@@ -6,4 +6,3 @@ pages:
       - eos_command: 'COLLECTING_STATUS.md'
       - eos_config: 'EOS_CONFIG.md'
       - templating: 'JINJA_YAML_STRUCTURES.md'
-theme: readthedocs
