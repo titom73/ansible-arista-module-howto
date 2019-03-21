@@ -1,8 +1,8 @@
 Ansible automation for Arista EOS devices
-------------------------------------------
+-----------------------------------------------
 
 About Ansible modules for Arista EOS automation
------------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Arista EOS modules are part of the core modules list of ansible and do
 not require any additional 3rd part modules to be installed on your
@@ -16,7 +16,7 @@ website <https://docs.ansible.com/ansible/latest/modules/list_of_network_modules
 
 
 Available How-To:
---------------------
+~~~~~~~~~~~~~~~~~
 
    Do not forget to install requirements if you want to run tests
 
@@ -33,25 +33,25 @@ Available How-To:
    engine <JINJA_YAML_STRUCTURES.md>`_
 
 Installation & Requirements
----------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Please refer to `installation <INSTALL.md>`_ before running content of
 this repository
 
 Ask question or report issue
-----------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Please open an issue on Github this is the fastest way to get an answer.
 
 Contribute
-----------
+~~~~~~~~~~
 
 Contributing pull requests are gladly welcomed for this repository. If
 you are planning a big change, please start a discussion first to make
 sure we’ll be able to merge it.
 
 License
--------
+~~~~~~~~
 
 Project is published under `BSD
 License <https://github.com/titom73/ansible-arista-module-howto/blob/master/LICENSE>`_.
