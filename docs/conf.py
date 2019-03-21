@@ -20,7 +20,7 @@
 # -- Project information -----------------------------------------------------
 
 project = u'Ansible with Arista devices'
-copyright = u'2019, T'
+copyright = u'2019, Arista Networks'
 author = u'Thomas Grimonet'
 
 # The short X.Y version

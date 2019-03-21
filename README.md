@@ -1,4 +1,4 @@
-[![pipeline status](https://gitlab.aristanetworks.com/tgrimonet/ansible-content/badges/master/pipeline.svg)](https://gitlab.aristanetworks.com/tgrimonet/ansible-content/commits/master)
+[![Documentation Status](https://readthedocs.org/projects/ansible-arista-howto/badge/?version=latest)](https://ansible-arista-howto.readthedocs.io/en/latest/?badge=latest)
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -43,6 +43,7 @@ __List of documents__:
 - Getting status of Arista devices with Ansible: [EOS_COMMAND](docs/COLLECTING_STATUS.md)
 - Jinja2 & YML structures: [templating engine](docs/JINJA_YAML_STRUCTURES.md)
 
+For complete documentation, please refer to [read the doc](https://ansible-arista-howto.readthedocs.io/en/latest/) page.
 
 ## Installation & Requirements
 

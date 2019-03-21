@@ -6,7 +6,7 @@
 Welcome to Ansible with Arista devices's How To!
 =======================================================
 
-.. include:: index.rst
+.. include:: overview.rst
 
 Documentation structure
 -----------------------
@@ -15,10 +15,10 @@ Documentation structure
    :maxdepth: 2
    :caption: Contents:
 
+   INSTALL.md
    COLLECTING_STATUS.md
    EOS_CONFIG.md
    JINJA_YAML_STRUCTURES.md
-
 
 
 Indices and tables
