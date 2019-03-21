@@ -1,4 +1,4 @@
-Ansible automation for Arista EOS devices
+Overview
 -----------------------------------------------
 
 About Ansible modules for Arista EOS automation
