@@ -1,0 +1,18 @@
+---
+language: python
+python:
+  - "2.7"
+# command to install dependencies
+jobs:
+  include:
+    - stage: validate-pb-lint
+      install:
+        - pip install yamllint
+      # command to run tests
+      script:
+        - sh .ci/check-playbook-yamllint.sh
+    - stage: validate-pb-syntax
+      install:
+        - pip install -r requirements.txt
+      # command to run tests
+      script: sh .ci/check-playbook-syntax.sh
