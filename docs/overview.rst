@@ -26,11 +26,11 @@ Available How-To:
 **List of documents**:
 
 -  Manage ``eos`` configuration with ansible: `eos_config
-   module <EOS_CONFIG.md>`_
+   module <EOS_CONFIG.html>`_
 -  Getting status of Arista devices with Ansible: `eos_command
-   module <COLLECTING_STATUS.md>`_
+   module <COLLECTING_STATUS.html>`_
 -  Jinja2 & YML structures: `templating
-   engine <JINJA_YAML_STRUCTURES.md>`_
+   engine <JINJA_YAML_STRUCTURES.html>`_
 
 Installation & Requirements
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~

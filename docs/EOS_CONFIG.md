@@ -1,4 +1,4 @@
-# eos_config to manage Arista EOS configuration
+# Configure Arista EOS with Ansible
 
 [`eos_config`](https://docs.ansible.com/ansible/latest/modules/eos_config_module.html#eos-config-module) is a core module managed by Ansible network team. As this module is part of the core, there is no need to install additional Ansible module with `ansible-galaxy`
 
