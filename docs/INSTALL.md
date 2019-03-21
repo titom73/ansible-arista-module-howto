@@ -1,16 +1,6 @@
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**
+#Installation and Lab Environment
 
-- [Requirements](#requirements)
-    - [Docker and docker-topo](#docker-and-docker-topo)
-    - [Get cEOS-LAB image](#get-ceos-lab-image)
-    - [Run docker topology](#run-docker-topology)
-    - [Install requirements](#install-requirements)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
-# Requirements
+## Requirements
 
 Repository requires to install some requirements to be consumed:
 

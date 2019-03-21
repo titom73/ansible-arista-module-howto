@@ -6,7 +6,7 @@
 Welcome to Ansible with Arista devices's How To!
 =======================================================
 
-.. include:: index.md
+.. include:: index.rst
 
 Documentation structure
 -----------------------

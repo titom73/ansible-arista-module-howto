@@ -1,23 +1,3 @@
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
-
-- [YAML Structures in Jinja2](#yaml-structures-in-jinja2)
-    - [Basic](#basic)
-        - [Generic key allocation](#generic-key-allocation)
-        - [Structured key allocation](#structured-key-allocation)
-    - [List Management](#list-management)
-        - [YAML List](#yaml-list)
-        - [YAML Dictionary](#yaml-dictionary)
-        - [YAML Maps](#yaml-maps)
-    - [Advanced Jinja2 syntax](#advanced-jinja2-syntax)
-        - [Update variable in a Loop](#update-variable-in-a-loop)
-        - [Use IPaddr within Jinja2 template](#use-ipaddr-within-jinja2-template)
-        - [Manage Jinja2 rendering indentation](#manage-jinja2-rendering-indentation)
-        - [Loop management](#loop-management)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
 # YAML Structures in Jinja2
 
 Data structure to use `YAML` with `JINJA2` templates. `YAML` keeps data stored as a map containing keys and values associated to those keys.
@@ -100,7 +80,7 @@ Assuming following data structure in `YAML`
 
 ```yaml
 ---
-vlans: 
+vlans:
   10: descr1
   20: descr2
   30: descr3
