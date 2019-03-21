@@ -7,7 +7,7 @@ Available How-To:
    Do not forget to install requirements if you want to run tests
 
 -  All **ansible** content is under
-   ```ansible-content`` <ansible-content>`__ folder.
+  `` `ansible-content <ansible-content>`_ `` folder.
 
 **List of documents**:
 
