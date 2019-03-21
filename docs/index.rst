@@ -15,6 +15,7 @@ Documentation structure
    :maxdepth: 2
    :caption: Contents:
 
+   overview.rst
    INSTALL.md
    COLLECTING_STATUS.md
    EOS_CONFIG.md
