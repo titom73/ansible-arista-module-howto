@@ -1,18 +1,3 @@
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents** 
-
-- [Collecting status from Arista EOS devices](#collecting-status-from-arista-eos-devices)
-    - [Collecting facts from devices.](#collecting-facts-from-devices)
-        - [Collect all facts and display some variables](#collect-all-facts-and-display-some-variables)
-        - [Save device configuration from facts](#save-device-configuration-from-facts)
-    - [Collecting result of commands](#collecting-result-of-commands)
-        - [Collect full command result:](#collect-full-command-result)
-        - [Filter results using loop](#filter-results-using-loop)
-        - [Wait for a specific result](#wait-for-a-specific-result)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
 # Collecting status from Arista EOS devices
 
 Ansible provides 2 different modules to collect information from EOS devices:
