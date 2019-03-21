@@ -1,4 +1,6 @@
-[![Documentation Status](https://readthedocs.org/projects/ansible-arista-howto/badge/?version=latest)](https://ansible-arista-howto.readthedocs.io/en/latest/?badge=latest)
+[![Documentation Status](https://readthedocs.org/projects/ansible-arista-howto/badge/?version=latest)](https://ansible-arista-howto.readthedocs.io/en/latest/?badge=latest)  [![Build Status](https://travis-ci.org/titom73/ansible-arista-module-howto.svg?branch=master)](https://travis-ci.org/titom73/ansible-arista-module-howto)
+
+
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
