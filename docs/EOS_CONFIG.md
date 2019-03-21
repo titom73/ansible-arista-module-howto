@@ -1,20 +1,3 @@
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents** 
-
-- [eos_config to manage Arista EOS configuration](#eos_config-to-manage-arista-eos-configuration)
-    - [Apply lines of configurations to devices.](#apply-lines-of-configurations-to-devices)
-        - [Basic lines of configuration](#basic-lines-of-configuration)
-        - [Dynamic lines of configuration](#dynamic-lines-of-configuration)
-        - [Lines of configuration within a block](#lines-of-configuration-within-a-block)
-    - [Apply configuration file to device](#apply-configuration-file-to-device)
-        - [Apply a config file](#apply-a-config-file)
-        - [Apply a template](#apply-a-template)
-    - [And finally, how to save config](#and-finally-how-to-save-config)
-    - [Get diff between running and intended configuration](#get-diff-between-running-and-intended-configuration)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
 # eos_config to manage Arista EOS configuration
 
 [`eos_config`](https://docs.ansible.com/ansible/latest/modules/eos_config_module.html#eos-config-module) is a core module managed by Ansible network team. As this module is part of the core, there is no need to install additional Ansible module with `ansible-galaxy`
