@@ -49,7 +49,7 @@ For complete documentation, please refer to [read the doc](https://ansible-arist
 
 ## Installation & Requirements
 
-Please refer to [installation](INSTALL.md) before running content of this repository
+Please refer to [installation](docs/INSTALL.md) before running content of this repository
 
 ## Ask question or report issue
 
