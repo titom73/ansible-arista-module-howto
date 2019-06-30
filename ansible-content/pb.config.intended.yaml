@@ -12,3 +12,9 @@
         provider: "{{arista_credentials}}"
         diff_against: intended
         intended_config: "{{ lookup('file', 'inputs/{{inventory_hostname}}-master.cfg') }}"
+
+    - name: Load a config in an intended way
+      eos_config:
+        provider: "{{arista_credentials}}"
+        src: "{{ lookup('file', 'inputs/{{inventory_hostname}}-master.cfg') }}"
+        replace: 'config'

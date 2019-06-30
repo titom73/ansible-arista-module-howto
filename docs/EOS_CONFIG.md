@@ -347,6 +347,32 @@ ceos1                      : ok=2    changed=1    unreachable=0    failed=0
 ceos2                      : ok=2    changed=1    unreachable=0    failed=0
 ```
 
+## Intended configuration approach
+
+Pushing intended configuration is probably the best approach in an automation workflow: your device configuration does not deviate from your expectations as complete configuration is pushed by ansible.
+
+To work in this approach, you need to build complete configuration using either a complete template or by assembling rendered templates. Once it is done, you can push and replace configuration with following syntax:
+
+ ```yaml
+   tasks:
+    - name: Load a config in an intended way
+      eos_config:
+        provider: "{{arista_credentials}}"
+        src: "{{ lookup('file', 'inputs/{{inventory_hostname}}-master.cfg') }}"
+        replace: 'config'
+ ```
+
+This approach can also be applied with template:
+
+```yaml
+  tasks:
+    - name: Intended configuration management
+      eos_config:
+        provider: "{{arista_credentials}}"
+        src: "device-configuration.j2"
+        replace: "config"
+```
+
 ## And finally, how to save config
 
 `eos_config` module can automatically save config to the __startup_config__. It provides 3 different options to do that. The `save` action is started by either __save__ or __save_when__ keywords:
